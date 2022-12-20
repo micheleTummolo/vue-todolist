@@ -62,8 +62,6 @@ createApp({
         },
 
         darkTheme () {
-            /* let theme = this.theme */
-
             if (!this.theme)
                 this.theme = true
             else
