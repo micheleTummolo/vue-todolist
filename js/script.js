@@ -45,7 +45,11 @@ createApp({
                 done: false
             }
 
-            this.tasks.push(task)
+            if (this.newTask == "")
+                this.removeTask(index)
+            else
+                this.tasks.push(task)
+
             this.newTask = ""
         },
 
