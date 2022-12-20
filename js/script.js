@@ -3,6 +3,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            theme: false,
             newTask: "",
             tasks: [
                 {
@@ -54,6 +55,15 @@ createApp({
                 task.done = true
             else
                 task.done = false
+        },
+
+        darkTheme () {
+            /* let theme = this.theme */
+
+            if (!this.theme)
+                this.theme = true
+            else
+                this.theme = false        
         }
     }
 }).mount('#app')

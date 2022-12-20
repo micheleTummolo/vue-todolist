@@ -17,36 +17,44 @@
     <title>To-do list</title>
 </head>
 <body>
-    <div id="app">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h2 class="fw-bold mt-3">To-do list</h2>
+    <div id="app" >
+        <div class="main_cont" :class="theme ? 'dark' : ''">
+            <button v-if="!theme" class="btn btn-dark rounded-circle button_position" @click="darkTheme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button v-else class="btn btn-light rounded-circle button_position" @click="darkTheme">
+                <i class="fa-solid fa-sun"></i>
+            </button>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h2 class="fw-bold mt-3" :class="theme ? 'text-white' : ''">To-do list</h2>
+                    </div>
                 </div>
-            </div>
-            <div class="row d-flex justify-content-center">
-                <div class="col-12 col-md-6 border border-2 rounded px-5">
-                    <ol class="mt-3 list-unstyled">
-                        
-                        <li v-for="(item, index) in tasks" class="my-3 py-2 border-bottom d-flex justify-content-between" :class="item.done ? 'text-decoration-line-through' : ''">
-                            <div class="d-flex align-items-center cursor_pointer" @click="doneTask(index)">
-                                {{ index + 1 }} - {{ item.text }}
-                            </div>
-                            <div>
-                                <button class="btn btn-danger py-1 px-3" @click="removeTask(index)">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </button>
-                            </div>
-                        </li>
-                    </ol>
+                <div class="row d-flex justify-content-center mt-3">
+                    <div class="col-12 col-md-6 border border-2 rounded px-5">
+                        <ol class="mt-3 list-unstyled">
+                            
+                            <li v-for="(item, index) in tasks" class="my-3 py-2 border-bottom d-flex justify-content-between" :class="item.done ? 'text-decoration-line-through' : ''">
+                                <div class="d-flex align-items-center cursor_pointer" @click="doneTask(index)" :class="theme ? 'text-white' : ''">
+                                    {{ index + 1 }} - {{ item.text }}
+                                </div>
+                                <div>
+                                    <button class="btn btn-danger py-1 px-3" @click="removeTask(index)">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
                 </div>
-            </div>
-            <div class="row mt-3 d-flex justify-content-center">
-                <div class="col-12 col-md-6 p-0 d-flex justify-content-between">
-                    <input type="text" class="form-control" v-model="newTask" placeholder="Aggiungi un nuovo task" v-on:keyup.enter="addTask">
-                    <button class="btn btn-primary ms-3" @click="addTask">
-                        Aggiungi
-                    </button>
+                <div class="row mt-3 d-flex justify-content-center">
+                    <div class="col-12 col-md-6 p-0 d-flex justify-content-between">
+                        <input type="text" class="form-control" v-model="newTask" placeholder="Aggiungi un nuovo task" v-on:keyup.enter="addTask">
+                        <button class="btn btn-primary ms-3" @click="addTask">
+                            Aggiungi
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
